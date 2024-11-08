@@ -4,23 +4,26 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MyProfile from "./components/MyProfile";
+import AuthForm from "./components/AuthForm";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const user = {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        totalDeposits: 120,
-        badges: ["Recycler", "Eco Warrior"]
+    const [user, setUser] = useState(null);
+    const [showAuthForm, setShowAuthForm] = useState(false);
+
+    const handleLogin = (userData) => {
+        setUser(userData);
+        setIsLoggedIn(true);
     };
 
-    const handleLogin = () => {
-        setIsLoggedIn(true);
+    const handleAuthFormClose = () => {
+        setShowAuthForm(false);
     };
 
     return (
         <div className="App gradient-background">
-            <Header onLogin={handleLogin} />
+            <Header onLogin={() => setShowAuthForm(true)} />
+            {showAuthForm && <AuthForm onClose={handleAuthFormClose} onLogin={handleLogin} />}
             {isLoggedIn ? <MyProfile user={user} /> : <Homepage />}
             <Footer />
         </div>

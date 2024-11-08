@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../css/AuthForm.css';
 
-const AuthForm = ({ onClose }) => {
+const AuthForm = ({ onClose, onLogin }) => {
     const [isSignUp, setIsSignUp] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const toggleFormType = () => {
         setIsSignUp(!isSignUp);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('Submitting form with:', { username, password, isSignUp });
+        try {
+            const response = await axios.post('http://127.0.0.1:5002/api/authenticate', {
+                username: username,
+                password: password
+            });
+            console.log(`Status Code: ${response.status}`);
+            console.log('Response JSON:', response.data);
+            onLogin(response.data.user);
+            onClose();
+        } catch (error) {
+            console.error('Authentication failed:', error);
+        }
     };
 
     return (
@@ -13,14 +33,14 @@ const AuthForm = ({ onClose }) => {
             <div className="auth-form">
                 <button className="close-button" onClick={onClose}>X</button>
                 <h2>{isSignUp ? 'Sign Up' : 'Sign In'}</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label>
-                        Email:
-                        <input type="email" name="email" required />
+                        Username:
+                        <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                     </label>
                     <label>
                         Password:
-                        <input type="password" name="password" required />
+                        <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     </label>
                     {isSignUp && (
                         <label>

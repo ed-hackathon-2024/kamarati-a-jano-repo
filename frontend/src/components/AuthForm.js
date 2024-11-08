@@ -21,7 +21,7 @@ const AuthForm = ({ onClose, onLogin }) => {
             });
             console.log(`Status Code: ${response.status}`);
             console.log('Response JSON:', response.data);
-            onLogin(response.data.user);
+            onLogin(response.data.user.username);  // Pass `username` directly
             onClose();
         } catch (error) {
             console.error('Authentication failed:', error);

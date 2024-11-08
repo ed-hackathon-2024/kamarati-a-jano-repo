@@ -14,6 +14,7 @@ DB_NAME = 'hackathon2024DB'
 DB_USER = 'pouzivatel'
 DB_PASSWORD = 'Hackathon-2024db'
 
+
 def get_db_connection():
     """Establishes a connection to the PostgreSQL database."""
     try:
@@ -28,6 +29,7 @@ def get_db_connection():
     except psycopg2.OperationalError as e:
         print("Database connection failed:", e)
         return None
+
 
 @app.route('/api/authenticate', methods=['POST'])
 def authenticate():
@@ -54,15 +56,15 @@ def authenticate():
         print("Database connection closed")
 
         if user:
-            print("Authentication successful")
-            return jsonify({"message": "Authentication successful"}), 200
+            return jsonify({"message": "Authentication successful", "user": {"username": username}}), 200
         else:
-            print("Invalid credentials")
             return jsonify({"error": "Invalid credentials"}), 401
+
 
     except Exception as e:
         print("Error during authentication:", e)
         return jsonify({"error": "Authentication failed"}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5002)

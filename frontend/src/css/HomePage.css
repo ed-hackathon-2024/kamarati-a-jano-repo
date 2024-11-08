@@ -1,64 +1,181 @@
-/* General styles */
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f9;
 }
 
+/* Container for the entire page */
 .home-page {
     text-align: center;
     padding: 20px;
 }
 
+/* Header */
 .header {
     background-color: #4CAF50;
-    padding: 10px 0;
+    padding: 20px 0;
     color: white;
     animation: slideIn 1s ease-out;
 }
 
 .nav a {
     color: white;
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .nav a:hover {
     text-decoration: underline;
+    color: #d4edda;
 }
 
+/* Hero Section */
 .hero {
-    background-color: #f4f4f4;
-    padding: 50px 20px;
+    background-color: #fff;
+    padding: 80px 20px;
+    color: #4CAF50;
     animation: fadeIn 2s ease-in;
+    text-align: center;
 }
 
-.features, .environment, .about, .contact {
-    padding: 40px 20px;
+.hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #388E3C;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    background-color: #fff;
     animation: fadeInUp 1.5s ease-in;
+}
+
+.features h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .feature-cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .feature-card {
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    width: 30%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    background-color: #e8f5e9;
+}
+
+.about p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Environment Section */
+.environment {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.environment p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Contact Section */
+.contact {
+    padding: 60px 20px;
+    background-color: #e8f5e9;
+}
+
+.contact a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Social Media */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px;
+}
+
+ul li a {
+    color: #4CAF50;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #388E3C;
 }
 
 /* Animations */

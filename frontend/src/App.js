@@ -7,12 +7,13 @@ import MyProfile from "./components/MyProfile";
 import AuthForm from "./components/AuthForm";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [user, setUser] = useState("jano");
     const [showAuthForm, setShowAuthForm] = useState(false);
 
-    const handleLogin = (userData) => {
-        setUser(userData);
+    const handleLogin = (username) => {
+        console.log('handleLogin called with:', username); // Add this for debugging
+        setUser(username);
         setIsLoggedIn(true);
     };
 

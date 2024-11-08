@@ -1,0 +1,76 @@
+.auth-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it is on top */
+}
+
+.auth-form {
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    position: relative; /* Ensure close button is positioned correctly */
+    color: black; /* Ensure text color is visible */
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: black; /* Ensure close button is visible */
+}
+
+.auth-form h2 {
+    margin-top: 0;
+    color: black; /* Ensure heading is visible */
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: black; /* Ensure label text is visible */
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.auth-form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.auth-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: underline;
+}

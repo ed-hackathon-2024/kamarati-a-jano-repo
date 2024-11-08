@@ -1,12 +1,16 @@
-import './App.css';
+import './css/App.css';
+import Homepage from "./components/HomePage";
+import React from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-          <h1>Serus Jano</h1>
-      </header>
-    </div>
+      <div className="App">
+          <Header/>
+          <Homepage/>
+          <Footer/>
+      </div>
   );
 }
 

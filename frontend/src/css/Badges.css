@@ -1,0 +1,107 @@
+/* Root styles for colors and common variables (to ensure consistency with other styles) */
+:root {
+    --primary-green: #4CAF50;
+    --secondary-green: #81C784;
+    --earth-brown: #8D6E63;
+    --sky-blue: #B3E5FC;
+    --neutral-white: #F5F5F5;
+    --text-color: #333;
+    --border-radius: 8px;
+}
+
+/* Badges Container */
+.badges-container {
+    padding: 20px;
+    background-color: var(--neutral-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid var(--earth-brown);
+    margin-bottom: 30px;
+}
+
+/* Badge List */
+.badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Single Badge Style */
+.badge {
+    background-color: var(--neutral-white);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    border: 1px solid var(--earth-brown);
+}
+
+.badge:hover {
+    transform: scale(1.05);
+}
+
+/* Badge Image */
+.badge-image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+/* Badge Information */
+.badge-info h3 {
+    font-size: 20px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* Badge Description */
+.badge-info h4 {
+    font-size: 15px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+/* Badge Date Earned */
+.badge-info p {
+    font-size: 12px;
+    color: var(--earth-brown);
+    margin-bottom: 5px;
+}
+
+.date-earned {
+    font-size: 0.9em;
+    color: var(--earth-brown);
+    margin-top: 10px;
+}
+
+/* Optional: Responsive styles */
+@media (max-width: 768px) {
+    .badges-container {
+        padding: 15px;
+    }
+
+    .badges-list {
+        gap: 10px;
+    }
+
+    .badge {
+        width: 160px;
+        padding: 12px;
+    }
+
+    .badge-info h3 {
+        font-size: 1em;
+    }
+
+    .badge-info h4 {
+        font-size: 0.9em;
+    }
+
+    .date-earned {
+        font-size: 0.8em;
+    }
+}

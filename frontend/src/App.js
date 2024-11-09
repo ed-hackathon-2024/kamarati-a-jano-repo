@@ -9,7 +9,7 @@ import AuthForm from "./components/AuthForm";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const [user, setUser] = useState("jano");
+    const [user, setUser] = useState("Jano The Recycler");
     const [showAuthForm, setShowAuthForm] = useState(false);
 
     const handleLogin = (username) => {

@@ -1,17 +1,43 @@
 .my-profile {
-    background-color: white;
+    background: snow;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
+    text-align: center;
 }
+
+
 
 .profile-info p {
     margin: 10px 0;
+    text-align: center;
 }
 
 .profile-info strong {
     color: #4CAF50;
+}
+
+.profile-info {
+    justify-content: space-between;
+    font-size: 30px;
+}
+
+.summary-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between the two components */
+    justify-content: space-between;
+}
+
+.summary-container > div {
+    flex: 1 1 45%; /* Make each component take about 45% of the width */
+    min-width: 300px; /* Ensures components stay legible on smaller screens */
+}
+
+@media (max-width: 768px) {
+    .summary-container {
+        flex-direction: column; /* Stacks components vertically on smaller screens */
+    }
 }

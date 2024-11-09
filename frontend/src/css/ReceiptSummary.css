@@ -45,6 +45,8 @@
     display: flex;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 }
 
 .receipt-buttons button {
@@ -54,7 +56,7 @@
     border-radius: var(--border-radius);
     padding: 8px 12px;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.7em;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -67,6 +69,38 @@
     background-color: var(--primary-green);
     color: var(--neutral-white);
     font-weight: bold;
+}
+
+/* Pagination controls styling */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.pagination-controls button {
+    background-color: var(--sky-blue);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+    background-color: var(--secondary-green);
+    color: var(--neutral-white);
+}
+
+.pagination-controls button:disabled {
+    background-color: #e0e0e0;
+    color: #9e9e9e;
+    cursor: not-allowed;
 }
 
 /* Receipt details styling */
@@ -114,4 +148,70 @@
     color: var(--earth-brown);
     font-size: 1em;
     margin-top: 20px;
+}
+
+/* Graph container styling */
+.receipt-graph {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--neutral-white);
+    border: 1px solid var(--secondary-green);
+    border-radius: var(--border-radius);
+}
+
+/* Graph title styling */
+.receipt-graph h4 {
+    text-align: center;
+    font-size: 1.3em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Time Period Selector Styling */
+.time-period-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.time-period-selector button {
+    background-color: var(--sky-blue);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.time-period-selector button:hover {
+    background-color: var(--secondary-green);
+    color: var(--neutral-white);
+}
+
+.time-period-selector button.active {
+    background-color: var(--primary-green);
+    color: var(--neutral-white);
+    font-weight: bold;
+}
+
+/* Optional: Responsive styles */
+@media (max-width: 768px) {
+    .receipt-graph {
+        padding: 10px;
+    }
+
+    .receipt-graph h4 {
+        font-size: 1.2em;
+    }
+
+    .receipt-buttons, .pagination-controls {
+        flex-direction: column;
+    }
+
+    .pagination-controls {
+        gap: 8px;
+    }
 }

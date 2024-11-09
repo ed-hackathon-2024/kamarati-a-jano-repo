@@ -116,9 +116,9 @@ def get_receipt_ids_by_customer_id(customer_id):
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    # Dotaz na získanie všetkých ID bločkov pre daného zákazníka
+    # Dotaz na získanie všetkých ID bločkov a dátumov pre daného zákazníka
     cursor.execute("""
-        SELECT id 
+        SELECT id, create_date 
         FROM Receipts
         WHERE customer_id = %s
         ORDER BY create_date;
@@ -129,9 +129,41 @@ def get_receipt_ids_by_customer_id(customer_id):
     conn.close()
 
     # Spracovanie výsledkov do JSON formátu
-    receipt_ids = [row[0] for row in rows]
+    receipts = [{"receipt_id": row[0], "create_date": row[1].strftime('%Y-%m-%d %H:%M:%S')} for row in rows]
 
-    return jsonify({"receipt_ids": receipt_ids})
+    return jsonify({"receipts": receipts})
+
+
+
+
+@app.route('/api/receipts/customer/<int:customer_id>/deposits', methods=['GET'])
+def get_receipt_dates_and_deposit_counts_with_quantity(customer_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Dotaz na získanie dátumu bločku, počtu produktov a celkovej quantity pre daný receipt
+    cursor.execute("""
+        SELECT r.create_date, COUNT(p.id) as deposit_count, SUM(pi.quantity) as total_quantity
+        FROM Receipts r
+        JOIN Product_Items pi ON pi.fs_receipt_id = r.id
+        JOIN Products p ON p.id = pi.product_id
+        WHERE r.customer_id = %s
+          AND (p.name ILIKE '%%zaloha%%' OR p.name ILIKE '%%pet%%')
+          AND p.vat_rate = 0
+          AND p.category = 'drinks/non-alcoholic'
+        GROUP BY r.create_date
+        ORDER BY r.create_date DESC;
+    """, (customer_id,))
+
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    # Spracovanie výsledkov do JSON formátu
+    receipts = [{"create_date": row[0].strftime('%Y-%m-%d %H:%M:%S'),
+                 "total_quantity": row[2]} for row in rows]
+
+    return jsonify({"receipts": receipts})
 
 
 

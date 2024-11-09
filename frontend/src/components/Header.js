@@ -18,7 +18,7 @@ const Header = ({ user, onLogin }) => {
         <header className="header-container">
             <div className="logo-container">
                 <img src={logo} alt="Eco Buddy Logo" className="logo-image" />
-                <h1 className="logo-text">Eco Buddy</h1>
+                <h1 className="logo-text">EcoBuddy</h1>
             </div>
             <div className="auth-options">
                 {user ? (

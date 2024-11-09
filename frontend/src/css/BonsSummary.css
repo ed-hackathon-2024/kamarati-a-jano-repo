@@ -1,0 +1,48 @@
+.bons-summary {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--neutral-white);
+    border: 1px solid var(--earth-brown);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.bons-summary h3 {
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.time-period-selector {
+    margin-bottom: 20px;
+}
+
+.time-period-selector label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.time-period-selector button {
+    background-color: var(--sky-blue);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.time-period-selector button:hover {
+    background-color: var(--secondary-green);
+    color: var(--neutral-white);
+}
+
+.time-period-selector button.active {
+    background-color: var(--primary-green);
+    color: var(--neutral-white);
+    font-weight: bold;
+}

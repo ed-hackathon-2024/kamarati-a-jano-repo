@@ -1,6 +1,7 @@
+// frontend/src/App.js
+import React, { useState } from "react";
 import './css/App.css';
 import Homepage from "./components/HomePage";
-import React, { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MyProfile from "./components/MyProfile";
@@ -25,7 +26,7 @@ function App() {
         <div className="App gradient-background">
             <Header onLogin={() => setShowAuthForm(true)} />
             {showAuthForm && <AuthForm onClose={handleAuthFormClose} onLogin={handleLogin} />}
-            {isLoggedIn ? <MyProfile user={user} /> : <Homepage />}
+            {isLoggedIn ? <MyProfile user={user}/> : <Homepage />}
             <Footer />
         </div>
     );

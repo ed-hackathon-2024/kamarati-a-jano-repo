@@ -66,5 +66,40 @@ def authenticate():
         return jsonify({"error": "Authentication failed"}), 500
 
 
+
+@app.route('/api/products/receipt/<int:receipt_id>', methods=['GET'])
+def get_products_by_receipt(receipt_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT create_date FROM Receipts WHERE id = %s;", (receipt_id,))
+    create_date = cursor.fetchone()
+
+    if not create_date:
+        return jsonify({"message": "Receipt not found."}), 404
+
+    cursor.execute("""
+        SELECT p.name, p.price
+        FROM Products p
+        JOIN Product_Items pi ON pi.product_id = p.id
+        JOIN Receipts r ON r.id = pi.fs_receipt_id
+        WHERE r.id = %s;
+    """, (receipt_id,))
+
+    products = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    if not products:
+        return jsonify({"message": "No products found for this receipt."}), 404
+
+    product_list = [{"name": row[0], "price": row[1]} for row in products]
+    return jsonify({
+        "create_date": create_date[0].strftime('%Y-%m-%d %H:%M:%S'),
+        "products": product_list
+    })
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5002)

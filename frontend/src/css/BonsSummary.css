@@ -5,23 +5,20 @@
     background-color: var(--neutral-white);
     border: 1px solid var(--earth-brown);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .bons-summary h3 {
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: var(--text-color);
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
+/* Time Period Selector */
 .time-period-selector {
     margin-bottom: 20px;
-}
-
-.time-period-selector label {
-    font-weight: bold;
-    margin-right: 10px;
 }
 
 .time-period-selector button {
@@ -29,10 +26,11 @@
     color: var(--text-color);
     border: none;
     border-radius: var(--border-radius);
-    padding: 8px 12px;
+    padding: 8px 16px;
     margin: 0 5px;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 1em;
+    font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -45,4 +43,72 @@
     background-color: var(--primary-green);
     color: var(--neutral-white);
     font-weight: bold;
+}
+
+/* Bons Totals */
+.bons-totals {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--earth-brown);
+}
+
+.bons-totals p {
+    font-size: 1.1em;
+    margin: 8px 0;
+    color: var(--text-color-dark);
+}
+
+.bons-totals p strong {
+    font-size: 1.2em;
+    color: var(--primary-green);
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+    }
+}
+
+/* Charity Donation Button */
+.donate-button {
+    background-color: var(--sky-blue);
+    color: black;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.donate-button:hover {
+    background-color: orangered;
+    animation: pulse 1s infinite;
+}
+
+
+/* CO2 Savings and Insights */
+.bons-insights {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--primary-green);
+    color: black;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--earth-brown);
+    font-size: 0.95em;
+    font-style: italic;
 }

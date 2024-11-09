@@ -15,7 +15,7 @@ const MyProfile = ({ user }) => {
         const badges = [
             {
                 name: "First Purchase",
-                image: "/assets/badges/first_purchase.png",
+                image: "assets/cart.png",
                 description: "Awarded after your first purchase.",
                 date_earned: "2024-05-01",
             },

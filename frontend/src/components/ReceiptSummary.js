@@ -194,7 +194,7 @@ const ReceiptSummary = ({ availableReceipts }) => {
                         {receipt.products.map((product, index) => (
                             <tr key={index}>
                                 <td>{product.name.trim()}</td>
-                                <td>${parseFloat(product.price).toFixed(2)}</td>
+                                <td>{parseFloat(product.price).toFixed(2)}€</td>
                             </tr>
                         ))}
                         </tbody>

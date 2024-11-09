@@ -32,6 +32,10 @@ const BonsSummary = () => {
     const potentialSavings = (totalBons * SAVINGS_PER_BON).toFixed(2);
     const totalCO2Savings = (totalBons * CO2_SAVINGS_PER_BON).toFixed(2);
 
+    const handleDonation = () => {
+        alert(`Thank you for donating ${potentialSavings}€ to charity!`);
+    };
+
     const formatDataForGraph = () => {
         const groupedData = {};
         bonsData.forEach(bon => {
@@ -75,18 +79,6 @@ const BonsSummary = () => {
         <div className="bons-summary">
             <h3>Bons Summary</h3>
 
-            {/* Display Total Bons and Potential Savings */}
-            <div className="bons-totals">
-                <p><strong>Total Bons:</strong> {totalBons}</p>
-                <p><strong>Potential Savings:</strong> {potentialSavings}€</p>
-                <p><strong>CO2 Savings:</strong> {totalCO2Savings} kg CO2</p>
-            </div>
-
-            {/* Additional Insights */}
-            <div className="bons-insights">
-                <p><em>This savings is equivalent to planting approximately {(totalCO2Savings / 20).toFixed(1)} trees!</em></p>
-            </div>
-
             {/* Time Period Selector */}
             <div className="time-period-selector">
                 {["weekly", "monthly", "yearly"].map(period => (
@@ -102,6 +94,21 @@ const BonsSummary = () => {
 
             {/* Graph */}
             <Line data={chartData} options={{ responsive: true }} />
+
+                        {/* Display Total Bons and Potential Savings */}
+            <div className="bons-totals">
+                <p><strong>Total Bons:</strong> {totalBons}</p>
+                <p><strong>Potential Savings:</strong> {potentialSavings}€</p>
+                <button className="donate-button" onClick={handleDonation}>
+                    Donate {potentialSavings}€ to Charity
+                </button>
+                <p><strong>CO2 Savings:</strong> {totalCO2Savings} kg CO2</p>
+            </div>
+
+            {/* Additional Insights */}
+            <div className="bons-insights">
+                <p><em>This savings is equivalent to planting approximately {(totalCO2Savings / 20).toFixed(1)} trees!</em></p>
+            </div>
         </div>
     );
 };

@@ -1,25 +1,117 @@
-.receipt-summary {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+/* Root styles for colors and common variables */
+:root {
+    --primary-green: #4CAF50;
+    --secondary-green: #81C784;
+    --earth-brown: #8D6E63;
+    --sky-blue: #B3E5FC;
+    --neutral-white: #F5F5F5;
+    --text-color: #333;
+    --border-radius: 8px;
 }
 
+/* Container styling */
+.receipt-summary {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--neutral-white);
+    border: 1px solid var(--earth-brown);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.receipt-summary h3 {
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Receipt selector styling */
+.receipt-selector {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.receipt-selector p {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* Buttons for selecting receipts */
+.receipt-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.receipt-buttons button {
+    background-color: var(--sky-blue);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.receipt-buttons button:hover {
+    background-color: var(--secondary-green);
+    color: var(--neutral-white);
+}
+
+.receipt-buttons button.active {
+    background-color: var(--primary-green);
+    color: var(--neutral-white);
+    font-weight: bold;
+}
+
+/* Receipt details styling */
+.receipt-details {
+    padding: 15px;
+    background-color: var(--neutral-white);
+    border: 1px solid var(--secondary-green);
+    border-radius: var(--border-radius);
+}
+
+/* Receipt date styling */
+.receipt-details p {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* Table styling for receipt items */
 .receipt-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .receipt-table th,
 .receipt-table td {
     padding: 10px;
-    border: 1px solid #ddd;
     text-align: left;
+    border-bottom: 1px solid var(--earth-brown);
 }
 
 .receipt-table th {
-    background-color: #f4f4f4;
+    background-color: var(--sky-blue);
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .receipt-table td {
-    background-color: #fafafa;
+    color: var(--text-color);
+}
+
+/* Loading and error states */
+.receipt-summary div {
+    text-align: center;
+    color: var(--earth-brown);
+    font-size: 1em;
+    margin-top: 20px;
 }

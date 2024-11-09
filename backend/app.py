@@ -4,15 +4,16 @@ import psycopg2
 
 app = Flask(__name__)
 
-# Enable CORS for all routes and specifically allow localhost:3000
+
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
-# Database connection settings
+
 DB_HOST = 'hackathon-2024db.ctyyk8aykahg.eu-north-1.rds.amazonaws.com'
 DB_PORT = '5432'
 DB_NAME = 'hackathon2024DB'
 DB_USER = 'pouzivatel'
 DB_PASSWORD = 'Hackathon-2024db'
+
 
 
 def get_db_connection():
@@ -29,6 +30,8 @@ def get_db_connection():
     except psycopg2.OperationalError as e:
         print("Database connection failed:", e)
         return None
+
+
 
 
 @app.route('/api/authenticate', methods=['POST'])
@@ -56,14 +59,19 @@ def authenticate():
         print("Database connection closed")
 
         if user:
-            return jsonify({"message": "Authentication successful", "user": {"username": username}}), 200
+            print("Authentication successful")
+            return jsonify({"message": "Authentication successful"}), 200
         else:
+            print("Invalid credentials")
             return jsonify({"error": "Invalid credentials"}), 401
-
 
     except Exception as e:
         print("Error during authentication:", e)
         return jsonify({"error": "Authentication failed"}), 500
+
+
+
+
 
 
 
@@ -98,6 +106,34 @@ def get_products_by_receipt(receipt_id):
         "create_date": create_date[0].strftime('%Y-%m-%d %H:%M:%S'),
         "products": product_list
     })
+
+
+
+
+
+@app.route('/api/receipts/customer/<int:customer_id>', methods=['GET'])
+def get_receipt_ids_by_customer_id(customer_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Dotaz na získanie všetkých ID bločkov pre daného zákazníka
+    cursor.execute("""
+        SELECT id 
+        FROM Receipts
+        WHERE customer_id = %s
+        ORDER BY create_date;
+    """, (customer_id,))
+
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    # Spracovanie výsledkov do JSON formátu
+    receipt_ids = [row[0] for row in rows]
+
+    return jsonify({"receipt_ids": receipt_ids})
+
+
 
 
 
